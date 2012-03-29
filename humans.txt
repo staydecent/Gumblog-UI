@@ -1,0 +1,22 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */                                                                                             
+                                                                       
+   _|_|_|                            _|        _|                      
+ _|        _|    _|  _|_|_|  _|_|    _|_|_|    _|    _|_|      _|_|_|  
+ _|  _|_|  _|    _|  _|    _|    _|  _|    _|  _|  _|    _|  _|    _|  
+ _|    _|  _|    _|  _|    _|    _|  _|    _|  _|  _|    _|  _|    _|  
+   _|_|_|    _|_|_|  _|    _|    _|  _|_|_|    _|    _|_|      _|_|_|  
+                                                                   _|  
+                                                               _|_|    
+
+
+SITE
+    
+    Standards:  HTML5, CSS3
+    Components: HTML5 shiv, Normalize.css,
+                Respond.js, jQuery                 
+                              
+
+CONTRIBUTORS
+    
+    Adrian Unger, https://github.com/staydecent
