@@ -1,0 +1,45 @@
+[
+    {
+        "name": "gum/gum",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/staydecent/Gum.git",
+            "reference": "1dae758c0c6da255e391efaf13aa20775fde75b1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/staydecent/Gum/zipball/1dae758c0c6da255e391efaf13aa20775fde75b1",
+            "reference": "1dae758c0c6da255e391efaf13aa20775fde75b1",
+            "shasum": ""
+        },
+        "time": "2013-06-26 18:54:34",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Gum": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Public Domain"
+        ],
+        "authors": [
+            {
+                "name": "Adrian Unger",
+                "email": "dev@staydecent.ca",
+                "homepage": "http://staydecent.ca"
+            }
+        ],
+        "description": "Map URLs to callbacks.",
+        "homepage": "https://github.com/staydecent/Gum",
+        "keywords": [
+            "map",
+            "microframework",
+            "router",
+            "routing"
+        ]
+    }
+]

@@ -1,0 +1,5 @@
+{
+    "require": {
+        "gum/gum": "dev-master"
+    }
+}
