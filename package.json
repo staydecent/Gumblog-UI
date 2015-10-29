@@ -1,0 +1,52 @@
+{
+  "name": "gumblog",
+  "version": "1.0.0",
+  "description": "An experimental UI for writing blog posts.",
+  "main": "index.js",
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "jsxPragma": "html",
+          "plugins": [
+            "babel-plugin-jsx-factory"
+          ]
+        }
+      ]
+    ]
+  },
+  "scripts": {
+    "build": "browserify client/index.js | uglifyjs -mc > server/assets/index.min.js",
+    "watch": "watchify client/index.js -o server/assets/index.min.js -dv",
+    "start": "php -S localhost:8000 -t server/",
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/staydecent/Gumblog-UI.git"
+  },
+  "author": "Adrian Unger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/staydecent/Gumblog-UI/issues"
+  },
+  "homepage": "https://github.com/staydecent/Gumblog-UI#readme",
+  "devDependencies": {
+    "babel-plugin-jsx-factory": "^1.0.1",
+    "babelify": "^6.4.0",
+    "browserify": "^12.0.1",
+    "catw": "^1.0.1",
+    "snabbdom-jsx": "^0.1.2",
+    "tape": "^4.2.2",
+    "uglifyjs": "^2.4.10",
+    "watchify": "^3.5.0"
+  },
+  "dependencies": {
+    "ampersand-dom": "^1.4.0",
+    "atom": "0.0.1",
+    "object-assign": "^4.0.1",
+    "snabbdom": "^0.2.7",
+    "union-type": "^0.1.6"
+  }
+}
