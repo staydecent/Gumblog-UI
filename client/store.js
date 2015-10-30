@@ -6,7 +6,7 @@ const STORAGE = 'gum'
 let initialState = assign({
   post: {
     title: '',
-    link: '',
+    slug: '',
     body: ''
   }
 }, JSON.parse(localStorage.getItem(STORAGE)))

@@ -1,59 +1,38 @@
 import {html} from 'snabbdom-jsx'
-import assign from 'object-assign'
 import dom from 'ampersand-dom'
 
 import store from '../store.js'
-import {slugify} from '../helpers.js'
+import Title from './title.js'
 
 
 export default Write
 
-const ENTER = 13
-
-function handleTitleKeyup(post, e) {
-  let val = e.target.value
-  let isURL = val.indexOf('http') > -1
-  let code = (e.keyCode ? e.keyCode : e.which)
-  let $link = document.getElementById('link')
-  let $body = document.getElementById('body')
-
-  if (code === ENTER && val.length > 4) {
-    post.title = val
-    post.link = slugify(val)
-    store.dispatch({post: post})
-    dom.removeClass($link, 'ghost')
-    dom.removeClass($body, 'ghost')
-    $body.focus()
-  }
-}
-
 function Write({post}) {
-  console.log('Write', post)
+  const autofocus = (_, vnode) => {
+    if (post.title) vnode.elm.focus()
+  }
 
   return <div classNames="pure-g">
     <div classNames="pure-u-1">
       <form classNames="pure-form">
-        <input 
-          type="text" 
-          id="title"
-          name="title" 
-          value={post.title} 
-          on-keyup={handleTitleKeyup.bind(null, post)}
-          autofocus={true} 
-          placeholder="Start writing here&hellip;" />
+        <Title title={post.title} autofocus={!post.slug} /> 
 
         <input 
           type="text" 
-          id="link" 
-          name="link"
-          classNames="minor ghost"
-          value={post.link}
+          id="slug" 
+          name="slug"
+          classNames="minor"
+          class-ghost={post.slug === ''}
+          value={post.slug}
+          disabled={true}
           />
 
         <textarea 
           id="body" 
           name="body"
-          classNames="ghost"
+          class-ghost={!post.title}
+          autofocus={post.title}
+          hook-postpatch={autofocus}
           ></textarea>
       </form>
     </div>
