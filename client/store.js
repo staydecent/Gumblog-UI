@@ -7,6 +7,7 @@ let initialState = assign({
   post: {
     title: '',
     slug: '',
+    link: '',
     body: ''
   }
 }, JSON.parse(localStorage.getItem(STORAGE)))

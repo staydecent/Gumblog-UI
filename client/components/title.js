@@ -3,7 +3,8 @@ import kefir from 'kefir'
 import dom from 'ampersand-dom'
 
 import store from '../store.js'
-import {slugify} from '../helpers.js'
+import {slugify, getTitleFromURL} from '../helpers.js'
+import {fadeIn} from '../styles.js'
 
 
 const ENTER = 13
@@ -17,25 +18,14 @@ function onInsert(vnode) {
     .skipDuplicates()
   
   input.onValue(v => {
-    store.dispatch({ post: {title: v, slug: slugify(v)} })
+    if (v.indexOf('http') > -1) {
+      getTitleFromURL(v, t => {
+        store.dispatch({ post: {title: t, slug: slugify(t), link: v} }) 
+      })
+    } else {
+      store.dispatch({ post: {title: v, slug: slugify(v)} })
+    }
   })
-}
-
-function handleTitleKeyup(post, e) {
-  let val = e.target.value
-  let isURL = val.indexOf('http') > -1
-  let code = (e.keyCode ? e.keyCode : e.which)
-  let $slug = document.getElementById('slug')
-  let $body = document.getElementById('body')
-
-  if (code === ENTER && val.length > 4) {
-    post.title = val
-    post.slug = slugify(val)
-    store.dispatch({post: post})
-    dom.removeClass($slug, 'ghost')
-    dom.removeClass($body, 'ghost')
-    $body.focus()
-  }
 }
 
 export default Title
@@ -47,6 +37,7 @@ function Title({title, autofocus}) {
           name="title" 
           value={title} 
           hook-insert={onInsert}
-          autofocus={autofocus } 
+          autofocus={autofocus} 
+          style={fadeIn}
           placeholder="Start writing here&hellip;" />
 }

@@ -3,7 +3,7 @@ import dom from 'ampersand-dom'
 
 import store from '../store.js'
 import Title from './title.js'
-
+import {fadeIn} from '../styles.js'
 
 export default Write
 
@@ -23,6 +23,7 @@ function Write({post}) {
           name="slug"
           classNames="minor"
           class-ghost={post.slug === ''}
+          style={(post.slug === '') ? {} : fadeIn}
           value={post.slug}
           disabled={true}
           />
@@ -31,6 +32,7 @@ function Write({post}) {
           id="body" 
           name="body"
           class-ghost={!post.title}
+          style={fadeIn}
           autofocus={post.title}
           hook-postpatch={autofocus}
           ></textarea>
